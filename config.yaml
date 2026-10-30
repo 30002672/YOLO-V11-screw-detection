@@ -1,0 +1,62 @@
+# YOLOv11 Pipeline Configuration
+
+# Model Configuration
+# Options: yolo11n.pt, yolo11s.pt, yolo11m.pt, yolo11l.pt, yolo11x.pt
+model:
+  type: "yolo11n.pt"  # Base pretrained model for fine-tuning
+  task: "detect"
+
+# Dataset Configuration
+# Point dataset_dir to your dataset folder containing train, valid (or val), and test directories
+dataset:
+  dataset_dir: "Counting Screws.v8i.yolov11"
+  train_path: "train"
+  val_path: "valid"
+  test_path: "test"
+  data_yaml: "dataset.yaml"  # Output configuration YAML file generated for YOLO
+  nc: 1
+  names: ["screw"]
+
+# Training Hyperparameters
+train:
+  epochs: 50
+  batch_size: 16
+  imgsz: 640
+  device: "cpu"  # "0" for GPU, "cpu" for CPU, or "auto"
+  workers: 4
+  patience: 20
+  save_period: -1
+  project: "runs/detect"
+  name: "yolov11_custom_train"
+  exist_ok: true
+  pretrained: true
+  optimizer: "auto"
+  lr0: 0.01
+  lrf: 0.01
+  seed: 42
+
+# Validation Settings
+val:
+  split: "val"  # "val" or "test"
+  imgsz: 640
+  batch_size: 16
+  conf: 0.25
+  iou: 0.6
+
+# Prediction / Inference Settings
+predict:
+  weights: "runs/detect/runs/detect/yolov11_custom_train/weights/best.pt"
+  source: "Counting Screws.v8i.yolov11/test/images"
+  conf: 0.25
+  iou: 0.45
+  save: true
+  save_txt: false
+  project: "runs/detect"
+  name: "yolov11_predictions"
+
+# Export Settings
+export:
+  weights: "runs/detect/runs/detect/yolov11_custom_train/weights/best.pt"
+  format: "onnx"  # onnx, torchscript, engine, openvino, coreml, tflite
+  dynamic: false
+  half: false

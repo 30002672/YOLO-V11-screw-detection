@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['screw']
+
+roboflow:
+  workspace: capjamesg
+  project: counting-screws
+  version: 8
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/capjamesg/counting-screws/dataset/8

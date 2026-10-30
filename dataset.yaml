@@ -1,0 +1,11 @@
+names:
+- screw
+nc: 1
+path: C:\Users\alinj\OneDrive\Desktop\Fall_SEM_1_2026\Research\New folder\Counting
+  Screws.v8i.yolov11
+test: C:\Users\alinj\OneDrive\Desktop\Fall_SEM_1_2026\Research\New folder\Counting
+  Screws.v8i.yolov11\test\images
+train: C:\Users\alinj\OneDrive\Desktop\Fall_SEM_1_2026\Research\New folder\Counting
+  Screws.v8i.yolov11\train\images
+val: C:\Users\alinj\OneDrive\Desktop\Fall_SEM_1_2026\Research\New folder\Counting
+  Screws.v8i.yolov11\valid\images
